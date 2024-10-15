@@ -7,8 +7,9 @@
 		flux
 		native {
 			fs
-			modules
-			loader
+		}
+		react {
+			jsx
 		}
 		storage
 		assets
@@ -27,8 +28,7 @@
 	}
 	ui {
 		components
-		alerts
-		color
+		sheets
 		toasts
 		styles
 		settings
@@ -36,6 +36,7 @@
 	utils {
 		constants
 		logger
+		lazy
 	}
 	plugin
 }
