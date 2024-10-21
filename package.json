@@ -1,0 +1,27 @@
+{
+    "name": "bn-types",
+    "version": "0.7.1",
+    "description": "Types for Bunny, a mod for Discord's mobile apps",
+    "author": {
+        "name": "pylixonly",
+        "url": "https://github.com/pylixonly"
+    },
+    "typings": "index.d.ts",
+    "keywords": [
+        "bunny-mod",
+        "discord"
+    ],
+    "license": "BSD-3-Clause",
+    "scripts": {},
+    "devDependencies": {
+        "@uwu/treetype": "^1.1.0",
+        "dts-bundle-generator": "^9.5.1",
+        "ts-patch": "^3.1.2",
+        "typescript": "^5.3.3"
+    },
+    "pnpm": {
+        "patchedDependencies": {
+            "dts-bundle-generator": "patches/dts-bundle-generator.patch"
+        }
+    }
+}

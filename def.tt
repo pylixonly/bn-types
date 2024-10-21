@@ -1,0 +1,46 @@
+\source ./dist/index.d.ts
+\import ./index
+
+@bunny from BunnyPluginObject {
+	api {
+		commands
+		flux
+		native {
+			fs
+		}
+		react {
+			jsx
+		}
+		storage
+		assets
+		patcher
+		debug
+		settings
+	}
+	plugins
+	themes
+	fonts
+	metro {
+		common {
+			components
+		}
+		factories
+		filters
+		lazy
+	}
+	ui {
+		components {
+			wrappers
+		}
+		sheets
+		toasts
+		styles
+		settings
+	}
+	utils {
+		constants
+		logger
+		lazy
+	}
+	plugin
+}

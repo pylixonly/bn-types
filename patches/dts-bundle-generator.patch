@@ -1,0 +1,15 @@
+Always export JSDocs files, temporary fix/hack for https://github.com/timocov/dts-bundle-generator/issues/328
+
+diff --git a/dist/bundle-generator.js b/dist/bundle-generator.js
+index 9c16dbe194e79da388f7cc27e6602efd8c94acf2..7817444ad7329b40c4ae4c945644b8fde3518060 100644
+--- a/dist/bundle-generator.js
++++ b/dist/bundle-generator.js
+@@ -968,7 +968,7 @@ function generateDtsBundle(entries, options = {}) {
+                 if (onlyExplicitlyExportedShouldBeExported) {
+                     // "valuable" statements must be re-exported from root source file
+                     // to having export keyword in declaration file
+-                    return { shouldHaveExportKeyword: isExplicitlyExportedWithOriginalName, shouldHaveJSDoc: statementExports.length !== 0 };
++                    return { shouldHaveExportKeyword: isExplicitlyExportedWithOriginalName, shouldHaveJSDoc: true };
+                 }
+                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                 if ((0, typescript_1.isNodeNamedDeclaration)(statement) && !isExportedWithLocalName(statement, (0, typescript_1.getNodeName)(statement).getText())) {

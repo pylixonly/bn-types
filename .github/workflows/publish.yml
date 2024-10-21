@@ -1,0 +1,63 @@
+name: Publish bunny-types
+on: [push]
+
+jobs:
+    prepare:
+        name: Prepare types for publication
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            
+            - name: Checkout Bunny repo
+              uses: actions/checkout@v4
+              with:
+                repository: pyoncord/Bunny
+                path: repo
+            
+            - name: Setup node
+              uses: actions/setup-node@v4
+              with:
+                node-version: 20
+            
+            - name: Install pnpm and dependencies
+              run: |
+                npm i -g pnpm
+                pnpm install
+                cd ./repo
+                pnpm install
+                cd ${{ github.workspace }}
+            
+            - name: Prepare
+              run: node scripts/prepare.mjs
+            
+            - name: Upload artifacts
+              uses: actions/upload-artifact@v3
+              with:
+                name: types
+                path: dist
+    
+    publish:
+        name: Publish to NPM
+        runs-on: ubuntu-latest
+        needs: prepare
+
+        steps:
+            - uses: actions/checkout@v3
+
+            - uses: actions/setup-node@v3
+              with:
+                registry-url: 'https://registry.npmjs.org'
+
+            - uses: actions/download-artifact@v3
+              with:
+                name: types
+                path: dist
+
+            - name: Publish package
+              working-directory: dist
+              run: npm publish
+              env:
+                NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+                NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+            
