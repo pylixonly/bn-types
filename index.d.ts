@@ -1,7 +1,6 @@
 
 // @ts-nocheck - Everything pass this line is manually written and not auto generated!
 declare global {
-    var React: typeof import("react");
     var ReactNative: typeof import("react-native");
 
     /** This object in this scope is exclusive to this plugin and is not the same as `global.bunny` */
